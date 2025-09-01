@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta property="og:title" content="Network Navigator" />
+    <meta property="og:description" content="Your guide to mastering professional social networks and digital tools" />
+    <meta
+      property="og:image"
+      content="https://mocha-cdn.com/og.png"
+      type="image/png"
+    />
+    <meta
+      property="og:url"
+      content="https://getmocha.com"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:author" content="Network Navigator" />
+    <meta property="og:site_name" content="Network Navigator" />
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:site" content="@network_navigator" />
+    <meta property="twitter:title" content="Network Navigator" />
+    <meta property="twitter:description" content="Your guide to mastering professional social networks and digital tools" />
+    <meta
+      property="twitter:image"
+      content="https://mocha-cdn.com/og.png"
+      type="image/png"
+    />
+    <link
+      rel="shortcut icon"
+      href="https://mocha-cdn.com/favicon.ico"
+      type="image/x-icon"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="https://mocha-cdn.com/apple-touch-icon.png"
+      type="image/png"
+    />
+    <title>Network Navigator</title>
+  </head>
+  <body>
+    <div id="container">
+      <h1>Network Navigator</h1>
+      <form id="ageForm">
+        <div class="input-group">
+          <label for="name">First Name:</label>
+          <input type="text" id="name" name="name" required />
+        </div>
+        <div class="input-group">
+          <label for="surname">Surname:</label>
+          <input type="text" id="surname" name="surname" required />
+        </div>
+        <div class="input-group">
+          <label for="dob">Date of Birth:</label>
+          <input type="date" id="dob" name="dob" required />
+        </div>
+        <button type="submit">Calculate Age</button>
+      </form>
+      <div id="result"></div>
+    </div>
+    <style>
+      body {
+        background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+        font-family: 'Segoe UI', Verdana, Geneva, Tahoma, sans-serif;
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      #container {
+        background: rgba(255,255,255,0.9);
+        border-radius: 20px;
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        padding: 40px 30px;
+        max-width: 350px;
+        width: 100%;
+        text-align: center;
+      }
+      h1 {
+        color: #ff6f61;
+        margin-bottom: 24px;
+      }
+      .input-group {
+        margin-bottom: 18px;
+        text-align: left;
+      }
+      label {
+        display: block;
+        margin-bottom: 6px;
+        color: #333;
+        font-weight: 500;
+      }
+      input[type="text"], input[type="date"] {
+        width: 100%;
+        padding: 8px;
+        border-radius: 8px;
+        border: 1px solid #fcb69f;
+        font-size: 1em;
+        background: #fff8f0;
+        box-sizing: border-box;
+      }
+      button {
+        background: linear-gradient(90deg, #ff6f61 0%, #fcb69f 100%);
+        color: white;
+        border: none;
+        border-radius: 8px;
+        padding: 10px 24px;
+        font-size: 1em;
+        cursor: pointer;
+        transition: background 0.3s;
+      }
+      button:hover {
+        background: linear-gradient(90deg, #fcb69f 0%, #ff6f61 100%);
+      }
+      #result {
+        margin-top: 24px;
+        font-size: 1.2em;
+        color: #ff6f61;
+        font-weight: bold;
+        min-height: 32px;
+      }
+    </style>
+    <script>
+      document.getElementById('ageForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const name = document.getElementById('name').value.trim();
+        const surname = document.getElementById('surname').value.trim();
+        const dob = document.getElementById('dob').value;
+        if (!name || !surname || !dob) {
+          document.getElementById('result').textContent = 'Please fill in all fields.';
+          return;
+        }
+        const birthDate = new Date(dob);
+        const today = new Date();
+        let age = today.getFullYear() - birthDate.getFullYear();
+        const m = today.getMonth() - birthDate.getMonth();
+        if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+          age--;
+        }
+        document.getElementById('result').textContent = `Hello ${name} ${surname}, you are ${age} years old.`;
+      });
+    </script>
+  </body>
+</html>
+
